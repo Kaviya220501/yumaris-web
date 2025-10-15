@@ -108,13 +108,13 @@ const About = () => {
     },
   ];
   return (
+
     <div
-      className="min-h-screen text-white overflow-x-hidden"
+      className="min-h-screen text-white"
       style={{ background: "#0B0E16" }}
     >
       <NavBar />
-
-      <div className="flex flex-col p-1 items-center justify-center gap-10 text-center">
+      <div className="overflow-hidden flex flex-col p-1 items-center justify-center gap-10 text-center">
         <h2
           ref={addToRefs}
           className={`font-black text-7xl px-6 py-6 sm:text-xl md:text-5xl lg:text-7xl transform transition-all duration-1200 ease-out
