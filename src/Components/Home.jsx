@@ -1,11 +1,18 @@
 import NavBar from "../Layout/NavBar";
 import Footer from "../Layout/Footer";
 import { useEffect, useRef, useState } from "react";
+  import { useContext } from "react";
+  import { ServicesContext } from "./Services/ServicesContext";
 
 const Home = () => {
+  const courses = useContext(ServicesContext); 
   const sectionRefs = useRef([]);
   const [visibleSections, setVisibleSections] = useState([]);
 
+    useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   useEffect(() => {
     setVisibleSections(new Array(sectionRefs.current.length).fill(false));
 
@@ -91,26 +98,7 @@ const Home = () => {
     { num: "2+", title: "Education Workshop", desc: "Conducted in schools and colleges" },
   ];
 
-  const courses = [
-    {
-      title: "Full-Stack Web Development",
-      desc: "Learn to build dynamic websites and applications.",
-      language: ["React.js", "Node.js", "MongoDB", "HTML", "CSS", "JavaScript"],
-      Adv: "Intermediate",
-      time: "8 weeks",
-      rate: "₹3,500",
-      star: "4.9",
-    },
-    {
-      title: "Java",
-      desc: "Master Java programming from basics to advanced concepts.",
-      language: ["Java", "OOP", "Data Structures", "Algorithms", "Spring Boot"],
-      Adv: "Advance",
-      time: "8 weeks",
-      rate: "₹3,500",
-      star: "4.8",
-    },
-  ];
+ 
 
   return (
     <>
@@ -239,24 +227,21 @@ const Home = () => {
               <h2 className="text-xl sm:text-2xl font-bold mb-4 bg-gradient-to-r from-[#4973f2] to-[#622cae] bg-clip-text text-transparent">
                 {course.title}
               </h2>
-              <p className="text-sm sm:text-gray-400 mb-4">{course.desc}</p>
-              <div className="flex gap-2 flex-wrap mt-2 text-xs sm:text-sm">
-                {course.language.map((lang, idx) => (
-                  <p
-                    key={idx}
-                    className="bg-blue-500/30 text-white px-2 py-1 rounded-lg"
-                  >
-                    {lang}
-                  </p>
-                ))}
-              </div>
-              <div className="flex justify-between border-t border-gray-700 my-4 pt-4 text-sm sm:text-base">
-                <p className="text-blue">
-                  <span className="font-semibold text-gray-400">Duration:</span> {course.time}
-                </p>
-                <p className="text-gray-400 text-lg sm:text-2xl font-bold bg-gradient-to-r from-[#4973f2] to-[#622cae] bg-clip-text text-transparent">
-                  {course.rate}
-                </p>
+              <p className="text-sm sm:text-gray-400 mb-4">{course.description}</p>
+              <div className=" border-t border-gray-700 my-4 pt-4 text-sm sm:text-base">
+                 <h3 className="text-white font-semibold mb-1">Key Topics</h3>
+      <ul className="list-disc list-inside text-white marker:text-[#5277e7] text-xs sm:text-sm pb-3">
+        {course.features.map((feature, idx) => (
+          <li key={idx}>{feature}</li>
+        ))}
+      </ul>
+
+      {course.weeks && (
+        <p className="text-blue-400 font-semibold text-sm">
+          Duration: {course.weeks}
+        </p>
+      )}
+
               </div>
               <button className="mt-6 w-full bg-gradient-to-r from-[#4973f2] to-[#652bb5] rounded-md px-4 py-2 text-sm sm:text-lg font-medium text-white shadow-md hover:scale-105 transition-transform duration-200">
                 Enroll Now

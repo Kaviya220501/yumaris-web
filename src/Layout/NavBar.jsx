@@ -6,10 +6,10 @@ const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   const services = [
-    { name: "🌐 Website Service", path: "/services/website" },
-    { name: "🧾 Educational Service", path: "/services/education" },
-    { name: "🎬 Video Editing", path: "/services/video" },
-    { name: "🎯 Digital Marketing", path: "/services/marketing" },
+    { name: " Website Service", path: "/services/website" },
+    { name: " Educational Service", path: "/services/education" },
+    { name: " Video Editing", path: "/services/video" },
+    { name: " Digital Marketing", path: "/services/marketing" },
   ];
 
   return (
@@ -40,7 +40,7 @@ const NavBar = () => {
               Service ▾
             </button>
             {open && (
-              <ul className="absolute top-8 left-1/2 -translate-x-1/2 w-56 bg-white/10 backdrop-blur-md rounded-md shadow-lg space-y-2 p-2 text-center">
+              <ul className="absolute top-8 left-1/2 -translate-x-1/2 w-56 bg-white/20 backdrop-blur-md rounded-md shadow-lg space-y-2 p-2 text-center">
                 {services.map((service, index) => (
                   <li key={index}>
                     <Link
